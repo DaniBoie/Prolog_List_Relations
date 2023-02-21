@@ -62,7 +62,7 @@ my_add([N1Head | N1], [N2Head | N2], [Res | R]) :- Res is N1Head + N2Head, my_ad
 
 % Question 10 : Define a relation my_merge that takes two sorted lists of integers L1 and L2 and binds the third argument, R, to the result of merging the two sorted lists of integers similar to how merge_sort might do it.
 
-% my_merge (L1, L2, R)
+% my_merge (L1, L2, R) !!!!!!!!!!!!!!!
 my_merge([], L2, L2).
 my_merge(L1, [], L1).
 
@@ -71,3 +71,16 @@ my_merge([L1Head | L1], [L2Head | L2], [L2Head | R]) :- L1Head > L2Head, my_appe
 
 % L1Head <= L2Head
 my_merge([L1Head | L1], [L2Head | L2], [L1Head | R]) :- L1Head <= L2Head, my_append([L2Head], L2, Res), my_merge(L1, Res, R).
+
+% Question 11 : Define a relation my_sublist that takes two lists of atoms L1 and  L2 and succeeds only if L1 is a sublist of L2
+
+% my_sublist(L1, L2) !!!!!!!!!!!
+
+my_sub(L1, L2) :- my_length(L1, L1L), my_length(L2, L2L), L1L > L2L, write("false").
+
+
+% Question 12 : Define the relation my_assoc that takes an atom A and an association list ALIST and binds R to the value associated with A in ALIST. If there is no association for A, it fails.
+
+% my_assoc(A, ALIST, R).
+my_assoc(A, [A | ALIST], R) :- [R | ALIST].
+my_assoc(A, [Head | ALIST], R) :- my_assoc(A, ALIST, R).
