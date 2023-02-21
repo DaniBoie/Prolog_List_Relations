@@ -21,4 +21,4 @@ my_length([], 0).
 % Question 2: Define a relation my_member that takes two arguments, a symbol A and a list of symbols L, succeeds when the symbol bound to A is found within L.   It fails otherwise.
 
 my_member(Member, [Member | _]).
-my_member(Member, [_ | Tail]) :- my_member(Member, Tail).
+my_member(Member, [_ | Tail]) :- my_member(Member, [Tail]).
