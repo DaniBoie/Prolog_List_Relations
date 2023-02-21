@@ -42,5 +42,7 @@ my_subst(X, Y, [Head | Z], [Head | R]) :- my_subst(X, Y, Z, R).
 
 % my_subset(P, L, R).
 my_subset(_, [], []).
-%  Case for True
-my_subset(P, [Head | L], [Head | R]) :- call(P, Head).
+% Case for True.
+my_subset(P, [Head | L], [Head | R]) :- call(P, Head), my_subset(P, L, R).
+% Case for False.
+my_subset(P, [_ | L], R) :- my_subset(P, L, R).
