@@ -87,7 +87,7 @@ my_merge([L1Head | L1], [L2Head | L2], [L1Head | R]) :- L1Head < L2Head, my_merg
 % my_sublist(L1, L2)
 my_sublist([], _).
 my_sublist([Head | L1], [Head | L2]) :- my_sublist_true(L1, L2).
-my_sublist([L1Head | L1], [L2Head | L2]) :- my_sublist([L1Head | L1], L2).
+my_sublist([L1Head | L1], [_L2Head | L2]) :- my_sublist([L1Head | L1], L2).
 
 my_sublist_true([], _).
 my_sublist_true([Head | L1], [Head | L2]) :- my_sublist_true(L1, L2).
