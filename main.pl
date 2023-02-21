@@ -28,3 +28,7 @@ my_member(Member, [_ | Tail]) :- my_member(Member, Tail).
 my_append([], List, List).
 my_append([L1Head | List1], List2, [L1Head | List3]) :- my_append(List1, List2, List3).
 
+% Question 4 : Define the relation my_reverse that takes a list L and another argument R which is the reversal of list L.
+
+my_reverse([], []).
+my_reverse([L1Head | List1], Reverse_List) :- my_reverse(List1, List1Reverse), my_append(L1Head, List1Reverse, Reverse_List).
