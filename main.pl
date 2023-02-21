@@ -76,6 +76,9 @@ my_merge([L1Head | L1], [L2Head | L2], [L1Head | R]) :- L1Head < L2Head, my_merg
 % my_sub(L1, L2) :- my_length(L1, L1L), my_length(L2, L2L), L1L > L2L, write("false").
 
 my_sublist([], _).
+% my_sublist([L1], [L1 | L2]).
+my_sublist([Head | L1], [Head | L2]) :- my_sublist(L1, L2).
+my_sublist([L1Head | L1], [L2Head | L2]) :- my_sublist([L1Head | L1], L2).
 
 
 % Question 12 : Define the relation my_assoc that takes an atom A and an association list ALIST and binds R to the value associated with A in ALIST. If there is no association for A, it fails.
