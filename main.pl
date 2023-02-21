@@ -82,5 +82,5 @@ my_sub(L1, L2) :- my_length(L1, L1L), my_length(L2, L2L), L1L > L2L, write("fals
 % Question 12 : Define the relation my_assoc that takes an atom A and an association list ALIST and binds R to the value associated with A in ALIST. If there is no association for A, it fails.
 
 % my_assoc(A, ALIST, R).
-my_assoc(A, [A, R | ALIST], R).
+my_assoc(A, [A, R | _], R).
 my_assoc(A, [_ | ALIST], R) :- my_assoc(A, ALIST, R).
