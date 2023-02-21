@@ -51,6 +51,7 @@ my_subset(P, [_ | L], R) :- my_subset(P, L, R).
 % Question 9 : Define a relation my_add that takes two lists of single digit integers, N1 and N2, which represent large magnitude positive integer numbers called big_nums, and binds the third parameter to a list in this big_num representation corresponding to adding the two big_nums N1 and N2.
 
 % my_add(N1, N2, R).
+
 my_add([], N2, N2).
 my_add(N1, [], N1).
 
@@ -59,5 +60,12 @@ my_add([N1Head | N1], [N2Head | N2], [Carryout | R]) :- Res is N1Head + N2Head, 
 % else
 my_add([N1Head | N1], [N2Head | N2], [Res | R]) :- Res is N1Head + N2Head, my_add(N1, N2, R).
 
+% Question 10 : Define a relation my_merge that takes two sorted lists of integers L1 and L2 and binds the third argument, R, to the result of merging the two sorted lists of integers similar to how merge_sort might do it.
 
+% my_merge (L1, L2, R)
+my_merge([], L2, L2).
+my_merge(L1, [], L1).
 
+% L1Head <= L2Head
+my_merge([L1Head | L1], [L2Head | L2], [L1Head | R]) :- L1Head <= L2Head, my_merge(L1, [L2Head, L2], R).
+my_merge([L1Head | L1], [L2Head | L2], [L2Head | R]) :- L1Head > L2Head, my_merge([L1head, L1], L2, R).
