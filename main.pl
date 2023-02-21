@@ -83,4 +83,4 @@ my_sub(L1, L2) :- my_length(L1, L1L), my_length(L2, L2L), L1L > L2L, write("fals
 
 % my_assoc(A, ALIST, R).
 my_assoc(A, [A | ALIST], R) :- [R | ALIST].
-my_assoc(A, [Head | ALIST], R) :- my_assoc(A, ALIST, R).
+my_assoc(A, [_ | ALIST], R) :- my_assoc(A, ALIST, R).
