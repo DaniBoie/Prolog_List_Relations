@@ -16,7 +16,7 @@ distance(X, Y) :- speed(X, Speed),
 
 my_length([], 0).
 
-% my_length([_|Tail], Length) :- my_length(Tail, R).
+my_length([_|Tail], Length) :- R is Length - 1, my_length(Tail, R).
 
 % Question 2: Define a relation my_member that takes two arguments, a symbol A and a list of symbols L, succeeds when the symbol bound to A is found within L.   It fails otherwise.
 
