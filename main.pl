@@ -1,21 +1,6 @@
-
-% Test Relations 
-speed(ford, 100).
-speed(chevy, 105).
-speed(dodge, 95).
-speed(volvo, 80).
-time(ford, 20).
-time(chevy, 21).
-time(dodge, 24).
-time(volvo, 24).
-distance(X, Y) :- speed(X, Speed),
- time(X, Time),
- Y is Speed * Time.
-
 % Question 1 : Define a relation my_length that takes two arguments, a list L, and an argument, R, for the number of top_level elements in L.
 
 my_length([], 0).
-
 my_length([_|Tail], Length) :- my_length(Tail, R), Length is 1 + R.
 
 % Question 2 : Define a relation my_member that takes two arguments, a symbol A and a list of symbols L, succeeds when the symbol bound to A is found within L.   It fails otherwise.
@@ -52,3 +37,10 @@ my_remove(X, [Head | List], [Head | R]) :- my_remove(X, List, R).
 my_subst(_, _, [], []).
 my_subst(X, Y, [X | Z], [Y | R]) :- my_subst(X, Y, Z, R).
 my_subst(X, Y, [Head | Z], [Head | R]) :- my_subst(X, Y, Z, R).
+
+% Question 8 : Define a relation my_subset that takes a relation P and a list L and binds the third argument R to a list with a subset of the elements of list L that satisfy the relation P.
+
+% my_subset(P, L, R).
+my_subset(_, [], []).
+%  Case for True
+my_subset(P, [Head | L], [Head | R]) :- call(P, Head).
