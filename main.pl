@@ -37,6 +37,6 @@ my_reverse([L1Head | List1], Reverse_List) :- my_reverse(List1, L1Reverse), my_a
 
 % my_nth(List, N, Return_List).
 
-my_nth(_, 0, []).
+my_nth([], _, []).
 my_nth(List, 1, List).
 my_nth([_ | List], N, Return_List) :- T is N - 1, my_nth(List, T, Return_List).
