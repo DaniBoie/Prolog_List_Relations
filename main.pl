@@ -84,3 +84,11 @@ my_sub(L1, L2) :- my_length(L1, L1L), my_length(L2, L2L), L1L > L2L, write("fals
 % my_assoc(A, ALIST, R).
 my_assoc(A, [A, R | _], R).
 my_assoc(A, [_, _ | ALIST], R) :- my_assoc(A, ALIST, R).
+
+% Question 13 : Define a relation my_replace that takes an association list ALIST and an arbitrary list L, that binds to a third argument R the list L with each variable (key) in ALIST replaced with the corresponding value it is bound to in ALIST.
+
+% my_replace(ALIST, L, R).
+
+my_replace(_, [], []).
+my_replace(ALIST, [Head | L], [Res | R]) :- my_assoc(Head, ALIST, Res), my_replace(ALIST, L, R).
+my_replace(ALIST, [Head | L], [Head | R]) :- my_replace(ALIST, L, R).
