@@ -35,8 +35,14 @@ my_reverse([L1Head | List1], Reverse_List) :- my_reverse(List1, L1Reverse), my_a
 
 % Question 5 : Define a relation my_nth that takes a list L and a positive integer N (N>0) and binds to the third argument, the tail of L beginning with the Nth element.
 
-% my_nth(List, N, Return_List).
-
 my_nth([], _, []).
 my_nth(List, 1, List).
 my_nth([_ | List], N, Return_List) :- T is N - 1, my_nth(List, T, Return_List).
+
+% Question 6 : Define a relation my_remove that takes a term X and a list L and binds the third argument R to a version of L with all top level occurrences of X removed from L.
+
+% my_remove(X, L, R).
+
+my_remove(_, [], []).
+my_remove(X, [X | List], R) :- my_remove(X, List, R).
+my_remove(X, [Head | List], [Head | R]) :- my_remove(X, List, R).
