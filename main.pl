@@ -65,12 +65,12 @@ my_add([N1Head | N1], [N2Head | N2], [Res | R]) :- Res is N1Head + N2Head, my_ad
 % my_merge (L1, L2, R) !!!!!!!!!!!!!!!
 my_merge([], L2, L2).
 my_merge(L1, [], L1).
+my_merge([Head | L1], [Head | L2], [Head | R]) :- my_merge(L1, L2, R).
 
-
-my_merge([L1Head | L1], [L2Head | L2], [L2Head | R]) :- L1Head > L2Head, my_append([L1Head], L1, Res), my_merge(Res, L2, R).
+my_merge([L1Head | L1], [L2Head | L2], [L2Head | R]) :- L1Head > L2Head, my_merge([L1Head | L1], L2, R).
 
 % L1Head <= L2Head
-my_merge([L1Head | L1], [L2Head | L2], [L1Head | R]) :- L1Head <= L2Head, my_append([L2Head], L2, Res), my_merge(L1, Res, R).
+my_merge([L1Head | L1], [L2Head | L2], [L1Head | R]) :- L1Head < L2Head, my_merge(L1, [L2Head | L2], R).
 
 % Question 11 : Define a relation my_sublist that takes two lists of atoms L1 and  L2 and succeeds only if L1 is a sublist of L2
 
