@@ -16,4 +16,4 @@ distance(X, Y) :- speed(X, Speed),
 
 my_length([], 0).
 
-my_length([Head|Tail], Length) :- Length is 1 + my_length(tail, _).
+my_length([Head|Tail], Length) :- Length is 1 + my_length(Tail, _).
