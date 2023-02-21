@@ -67,5 +67,6 @@ my_merge([], L2, L2).
 my_merge(L1, [], L1).
 
 % L1Head <= L2Head
-my_merge([L1Head | L1], [L2Head | L2], [L1Head | R]) :- L1Head <= L2Head, my_merge(L1, [L2Head, L2], R).
-my_merge([L1Head | L1], [L2Head | L2], [L2Head | R]) :- L1Head > L2Head, my_merge([L1head, L1], L2, R).
+my_merge([L1Head | L1], [L2Head | L2], [L1Head | R]) :- L1Head <= L2Head, my_append([L2Head], L2, Res) my_merge(L1, Res, R).
+my_merge([L1Head | L1], [L2Head | L2], [L2Head | R]) :- L1Head > L2Head, my_append([L1Head], L1, Res) my_merge(Res, L2, R).
+
