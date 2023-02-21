@@ -31,4 +31,4 @@ my_append([L1Head | List1], List2, [L1Head | List3]) :- my_append(List1, List2, 
 % Question 4 : Define the relation my_reverse that takes a list L and another argument R which is the reversal of list L.
 
 my_reverse([], []).
-my_reverse([L1Head | List1], Reverse_List) :- my_reverse(List1, List1Reverse), my_append(L1Head, List1Reverse, Reverse_List).
+my_reverse([L1Head | List1], Reverse_List) :- my_reverse(List1, L1Reverse), my_append(L1Reverse, L1Head, Reverse_List).
