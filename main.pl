@@ -41,8 +41,23 @@ my_subst(X, Y, [Head | Z], [Head | R]) :- my_subst(X, Y, Z, R).
 % Question 8 : Define a relation my_subset that takes a relation P and a list L and binds the third argument R to a list with a subset of the elements of list L that satisfy the relation P.
 
 % my_subset(P, L, R).
+
 my_subset(_, [], []).
 % Case for True.
 my_subset(P, [Head | L], [Head | R]) :- call(P, Head), my_subset(P, L, R).
 % Case for False.
 my_subset(P, [_ | L], R) :- my_subset(P, L, R).
+
+% Question 9 : Define a relation my_add that takes two lists of single digit integers, N1 and N2, which represent large magnitude positive integer numbers called big_nums, and binds the third parameter to a list in this big_num representation corresponding to adding the two big_nums N1 and N2.
+
+% my_add(N1, N2, R).
+my_add([], N2, N2).
+my_add(N1, [], N1).
+
+% N1 + N2 > 9
+my_add([N1Head | N1], [N2Head | N2], [Carryout | R]) :- Res is N1Head + N2Head, Res > 9, Carryout is Res - 10, my_add(N1, N2, RecurseList),  my_add([1], RecurseList, R).
+% else
+my_add([N1Head | N1], [N2Head | N2], [Res | R]) :- Res is N1Head + N2Head, my_add(N1, N2, R).
+
+
+
