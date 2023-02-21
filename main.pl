@@ -41,8 +41,14 @@ my_nth([_ | List], N, Return_List) :- T is N - 1, my_nth(List, T, Return_List).
 
 % Question 6 : Define a relation my_remove that takes a term X and a list L and binds the third argument R to a version of L with all top level occurrences of X removed from L.
 
-% my_remove(X, L, R).
-
 my_remove(_, [], []).
 my_remove(X, [X | List], R) :- my_remove(X, List, R).
 my_remove(X, [Head | List], [Head | R]) :- my_remove(X, List, R).
+
+% Question 7 : Define a relation my_subst that takes four arguments X Y Z and binds R to a version of Z with all occurrences of X replaced with Y.
+
+% my_subst(X, Y, Z, R)
+
+my_subst(_, _, [], []).
+my_subst(X, Y, [X | Z], [Y | R]) :- my_subst(X, Y, Z, R).
+my_subst(X, Y, [Head | Z], [Head | R]) :- my_subst(X, Y, Z, R).
