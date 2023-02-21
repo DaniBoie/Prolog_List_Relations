@@ -22,3 +22,9 @@ my_length([], 0).
 
 my_member(Member, [Member | _]).
 my_member(Member, [_ | Tail]) :- my_member(Member, Tail).
+
+% Question 3: Define a relation my_append that takes three arguments, list L1 and list L2, and an argument, R, which is the result of appending the two lists L1 and L2 together.
+
+my_append([], List, List).
+my_append([L1Head | List1], List2, [L1Head | List3]) :- my_append(List1, List2, List3).
+
