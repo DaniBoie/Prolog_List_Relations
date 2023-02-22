@@ -106,3 +106,11 @@ my_assoc(A, [_, _ | ALIST], R) :- my_assoc(A, ALIST, R).
 my_replace(_, [], []).
 my_replace(ALIST, [Head | L], [Res | R]) :- my_assoc(Head, ALIST, Res), my_replace(ALIST, L, R).
 my_replace(ALIST, [Head | L], [Head | R]) :- my_replace(ALIST, L, R).
+
+
+% Lab Question : Construct a relation called my_sum that takes in a list of integers L and a sum S, and instantiates S with the sum of the list.
+
+% my_sum(L, S)
+
+my_sum([], 0).
+my_sum([Head | L], S) :- my_sum(L, R), S is R + Head.
